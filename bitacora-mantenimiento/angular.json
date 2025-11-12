@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gestion-alumnos": {
+    "bitacora-mantenimiento": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -22,8 +22,9 @@
               }
             ],
             "styles": [
+              "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -59,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gestion-alumnos:build:production"
+              "buildTarget": "bitacora-mantenimiento:build:production"
             },
             "development": {
-              "buildTarget": "gestion-alumnos:build:development"
+              "buildTarget": "bitacora-mantenimiento:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,5 +88,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "0c2b355c-f163-40da-bd84-54ad7f987431"
   }
 }
