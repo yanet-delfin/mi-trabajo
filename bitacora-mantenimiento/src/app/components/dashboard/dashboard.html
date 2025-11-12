@@ -1,3 +1,41 @@
+<h1 class="text-center mb-4 text-primary">🛠 Listado de Servicios 🛠</h1>
 <div class="container">
-    <h1 class="text-center mb-4 text-primary">Servicios de Mantenimiento</h1>
+    <div class="row my-4">
+        <div class="col shadow-lg d-flex justify-content-evenly">
+            <button class="btn btn-outline-success  my-2">Agregar Servicio <i class="bi bi-person-plus-fill"></i></button>
+            <button class="btn btn-outline-primary my-2">Eliminar Servicio <i class="bi bi-exclamation-circle"></i></button>
+            <button class="btn btn-outline-danger my-2">Confirmar Servicio <i class="bi bi-person-rolodex"></i></button>
+            <button class="btn btn-outline-warning my-2">Finalizar Servicio <i class="bi bi-person-check-fill"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Equipo</th>
+                            <th>Servicio</th>
+                            <th>Descripcion</th>
+                            <th>Prioridad</th>
+                            <th>Estado</th>
+                            <th>Ubicacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let servicio of servicios">
+                            <td>{{ servicio._id }}</td>
+                            <td>{{ servicio.equipo }}</td>
+                            <td>{{ servicio.servicio }}</td>
+                            <td>{{ servicio.descripcion }}</td>
+                            <td>{{ servicio.prioridad }}</td>
+                            <td>{{ servicio.estado }}</td>
+                            <td>{{ servicio.ubicacion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
