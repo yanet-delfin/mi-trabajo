@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Mantenimiento } from '../../services/mantenimiento';
 import { firstValueFrom } from 'rxjs';
 import { CommonModule } from '@angular/common';

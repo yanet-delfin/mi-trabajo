@@ -15,5 +15,24 @@ export class Mantenimiento {
   obtenerServicios(): Observable<any> {
     return this.http.get('${this.apiUrl}');
   }
+
+  //2. Agregar/Registrar servicio
+  agregarServicio(datos: any): Observable<any> {
+    return this.http.post('${this.apiUrl}', datos);
+  }
+
+  //3. Dar de baja
+  darDeBaja(id: string, motivoBaja: string): Observable<any> {
+    return this.http.patch('${this.apuUrl}/${id}/baja',{ motivoBaja });
+  }
   
+  //4. Confirmar servicio
+  confirmarServicio(id: string, datos: any): Observable<any> {
+    return this.http.patch('${this.apiUrl}/${id}/confirmar', datos);
+  }
+
+  //5. Finalizar servicio
+  finalizarServicio(id: string, datos: any): Observable<any> {
+    return this.http.patch('${this.apiUrl}/${id}/terminar', datos);
+  }
 }
