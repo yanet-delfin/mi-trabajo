@@ -18,4 +18,6 @@ export class AltaServicio {
     private apiservicio: Mantenimiento,
     private detectarCambios: ChangeDetectorRef
   ) {}
+
+  async ngOnInit() {}
 }
