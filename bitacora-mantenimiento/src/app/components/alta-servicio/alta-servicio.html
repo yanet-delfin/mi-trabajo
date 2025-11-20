@@ -1,1 +1,40 @@
-<p>alta-servicio works!</p>
+<div class="container shadow p-4 my-4 bg-white rounded">
+    <div class="col bg-danger">
+        <div>
+            <h1>Agregar Servicio</h1>
+        </div>
+        <div *ngIf="mensaje">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage"> <i class="bi bi-ban"></i>
+                Error {{mensajeDeError}}
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="errorMessage"> <i class="bi bi-check-circle"></i>
+                Exito {{mensajeDeExito}}
+            </div>
+        </div>
+        <div class="mb-3 p-2">
+            <label for="Equipo" class="form-label"><i class="bi bi-archive"></i>Equipo:</label>
+            <input type="text" class="form-control" name="Equipo" [(ngModel)]="servicio.equipo">
+        </div>
+        <div class="mb-3 p-2">
+            <label for="Descripcion" class="for-label"><i class="bi bi-body-text"></i>Descripcion:</label>
+            <input type="textarea" class="form-control" name="Descripcion " [(ngModel)]="servicio.descripcion">
+        </div>
+        <div class="mb-3 p-2">
+            <label for="Prioridad" class="form-label"><i class="bi bi-chat-square-dots"></i>Prioridad:</label>
+            <select class="form-select" name="Prioridad" id="" aria-label="Default select example" [(ngModel)]="servicio.prioridad">
+                <option selected>Baja</option>
+                <option value="1">Media</option>
+                <option value="2">Alta</option>
+                <option value="3">Urgente</option>
+            </select>
+        </div>
+        <div class="mb-3 p-2">
+            <label for="Ubicacion" class="form-label">Ubicacion:</label>
+            <input type="text" class="form-control" [(ngModel)]="servicio.ubicacion">
+        </div>
+    </div>
+    <div class="p-2">
+        <button type="button" class="btn btn-outline-primary " (click)="guardarDatos()">Guardar Servicio</button>
+        <button type="button" class="btn btn-outline-warning" (click)="cancelar()">Cancelar</button>
+    </div>
+</div>

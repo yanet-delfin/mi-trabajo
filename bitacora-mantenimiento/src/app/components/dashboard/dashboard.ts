@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Mantenimiento } from '../../services/mantenimiento';
 import { firstValueFrom } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,8 @@ export class Dashboard {
   servicios: any[] = [];
   constructor(
     private apiservicio: Mantenimiento,
-    private detectarCambios: ChangeDetectorRef
+    private detectarCambios: ChangeDetectorRef,
+    private navegar: Router
   ) { }
 
   async ngOnInit() {
@@ -25,4 +27,10 @@ export class Dashboard {
     this.servicios = datos.data;
     this.detectarCambios.detectChanges();
   }
+
+  AgregarServicio() {
+    this.navegar.navigate(['alta-servicio']);
+  }
+
+  
 }
