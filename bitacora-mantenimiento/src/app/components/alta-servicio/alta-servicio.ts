@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Mantenimiento } from '../../services/mantenimiento';
 import { first, firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-servicio',
@@ -30,12 +31,13 @@ export class AltaServicio {
     ubicacion: ""
   }
   constructor(
-    private service: Mantenimiento
+    private service: Mantenimiento,
+    private navegar: Router
   ) {}
 
   async guardarDatos() {
     try {
-      await firstValueFrom(this.service.agregarServicio(this.service))
+      await firstValueFrom(this.service.agregarServicio(this.servicio))
       this.mensaje=true;
       this.errorMessage=false;
       this.mensajeDeExito="Servicio guardado";
@@ -46,11 +48,12 @@ export class AltaServicio {
     prioridad: "",
     ubicacion: ""
   }
+    this.navegar.navigate(['']);
     } catch (error) {
       this.mensaje=true;
       this.errorMessage=true;
       this.mensajeDeError="Error";
-      this.successMessage=true;
+      this.successMessage=false;
 
     }
   }
@@ -61,6 +64,7 @@ export class AltaServicio {
     prioridad: "",
     ubicacion: ""
   }
+  this.mensaje=false;
   }
 
 }

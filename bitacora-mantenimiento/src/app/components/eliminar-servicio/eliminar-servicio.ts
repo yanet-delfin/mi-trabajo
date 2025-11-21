@@ -1,11 +1,37 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { Mantenimiento } from '../../services/mantenimiento';
+import { firstValueFrom } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-eliminar-servicio',
-  imports: [],
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './eliminar-servicio.html',
   styleUrl: './eliminar-servicio.css',
 })
 export class EliminarServicio {
 
+  servicios : any [] = [];
+
+  constructor(
+    private service: Mantenimiento,
+    private recargarDatos: ChangeDetectorRef
+  ) {}
+
+  async ngOnInit() {
+    try {
+      const datos = await firstValueFrom(this.service.obtenerServicios());
+      this.servicios = datos.dato.filter((servicio: any) => servicio.estado == 'Pendiente');
+      this.recargarDatos.detectChanges();
+    } catch (error) {
+      console.error('Error al obtener servicios:', error);
+    }
+  }
+
+  bajaServicio(id:string) {
+    alert('Servicio con ID ${id} dado de baja.');
+  }
 }

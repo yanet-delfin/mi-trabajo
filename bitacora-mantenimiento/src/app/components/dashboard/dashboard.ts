@@ -32,5 +32,15 @@ export class Dashboard {
     this.navegar.navigate(['alta-servicio']);
   }
 
-  
+  EliminarServicio() {
+    this.navegar.navigate(['eliminar-servicio']);
+  }
+
+  ConfirmarServicio() {
+    this.navegar.navigate(['confirmar-servicio']);
+  }
+
+  FinalizarServicio() {
+    this.navegar.navigate(['terminar-servicio']);
+  }
 }

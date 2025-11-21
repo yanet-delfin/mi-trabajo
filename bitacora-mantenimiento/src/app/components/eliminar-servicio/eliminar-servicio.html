@@ -1,1 +1,55 @@
-<p>eliminar-servicio works!</p>
+<div class="container shadow p-4 my-4 bg-white rounded">
+    <div class="col bg-primary">
+        <div>
+            <h1>Eliminar Servicio</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div>
+        <div>
+            <label for="fecha" class="form-label">Fecha de baja</label>
+            <input type="date" class="form-control">
+        </div>
+        <div>
+            <label for="motivo" class="form-label">Motivo de baja</label>
+            <input type="textarea" class="form-control">
+        </div>
+    </div>
+    <div class="">
+        <div>
+            <div
+                class="table-responsive"
+            >
+                <table
+                    class="table table-primary"
+                >
+                    <thead>
+                        <tr>
+                            <th scope="col">equipo</th>
+                            <th scope="col">descripcion</th>
+                            <th scope="col">ubicacion</th>
+                            <th scope="col">estado</th>
+                            <th scope="col">accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let servicio of servicios">
+                            <td>{{ servicio.equipo}}</td>
+                            <td>{{ servicio.dsecripcion}}</td>
+                            <td>{{ servicio.ubicacion}}</td>
+                            <td>{{ servicio.estado}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="bajaServicio(servicio.id)">
+                                    eliminar el servicio
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div></div>
+    </div>
+</div>

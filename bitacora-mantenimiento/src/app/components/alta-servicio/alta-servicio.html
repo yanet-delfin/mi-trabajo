@@ -1,5 +1,5 @@
 <div class="container shadow p-4 my-4 bg-white rounded">
-    <div class="col bg-danger">
+    <div class="col bg-success">
         <div>
             <h1>Agregar Servicio</h1>
         </div>
@@ -22,10 +22,10 @@
         <div class="mb-3 p-2">
             <label for="Prioridad" class="form-label"><i class="bi bi-chat-square-dots"></i>Prioridad:</label>
             <select class="form-select" name="Prioridad" id="" aria-label="Default select example" [(ngModel)]="servicio.prioridad">
-                <option selected>Baja</option>
-                <option value="1">Media</option>
-                <option value="2">Alta</option>
-                <option value="3">Urgente</option>
+                <option selected value="Baja">Baja</option>
+                <option value="Media">Media</option>
+                <option value="Alta">Alta</option>
+                <option value="Urgente">Urgente</option>
             </select>
         </div>
         <div class="mb-3 p-2">
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="p-2">
-        <button type="button" class="btn btn-outline-primary " (click)="guardarDatos()">Guardar Servicio</button>
-        <button type="button" class="btn btn-outline-warning" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn btn-outline-primary mx-3" (click)="guardarDatos()">Guardar Servicio</button>
+        <button type="button" class="btn btn-outline-warning mx-3" (click)="cancelar()">Cancelar</button>
     </div>
 </div>
