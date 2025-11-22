@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 export class EliminarServicio {
 
   servicios : any [] = [];
+  ID: string = '';
 
   constructor(
     private service: Mantenimiento,
@@ -33,5 +34,9 @@ export class EliminarServicio {
 
   bajaServicio(id:string) {
     alert('Servicio con ID ${id} dado de baja.');
+    this.ID
+  }
+  alerta(mensaje:string, equipo:string) {
+    alert(mensaje + equipo);
   }
 }
