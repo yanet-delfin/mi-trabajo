@@ -20,8 +20,8 @@ export class AltaServicio {
   mensaje: boolean = false;
   errorMessage: boolean = true;
   successMessage: boolean = true;
-  mensajeDeError = 'al cargar servicio';
-  mensajeDeExito = 'al cargar servicio';
+  mensajeDeError = 'ejemplo mensaje de error';
+  mensajeDeExito = 'ejemplo mensaje de exito';
 
   //objeto para bindear datos del formulario
   servicio = {

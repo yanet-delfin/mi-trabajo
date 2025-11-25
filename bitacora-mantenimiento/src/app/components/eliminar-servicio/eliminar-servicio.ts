@@ -25,7 +25,7 @@ export class EliminarServicio {
   async ngOnInit() {
     try {
       const datos = await firstValueFrom(this.service.obtenerServicios());
-      this.servicios = datos.dato.filter((servicio: any) => servicio.estado == 'Pendiente');
+      this.servicios = datos.data.filter((servicio: any) => servicio.estado == 'Pendiente');
       this.recargarDatos.detectChanges();
     } catch (error) {
       console.error('Error al obtener servicios:', error);
