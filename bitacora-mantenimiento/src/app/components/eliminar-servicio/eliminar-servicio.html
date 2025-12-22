@@ -6,17 +6,21 @@
     </div>
 </div>
 <div class="container">
-    <div class="shadow-lg p-4 bg-dark text-white">
+    <div class="shadow-lg p-4 bg-dark text-white" *ngIf="modulobaja">
         <div class="text-center">
             <h5> ID: {{ID}} </h5>
         </div>
         <div>
             <label for="fecha" class="form-label">Fecha de baja</label>
-            <input type="date" class="form-control">
+            <input type="date" class="form-control" [(ngModel)]="fechaBaja">
         </div>
         <div>
             <label for="motivo" class="form-label">Motivo de baja</label>
-            <input type="textarea" class="form-control">
+            <input type="textarea" class="form-control" [(ngModel)]="motivoBaja">
+        </div>
+        <div class="">
+            <button class="btn btn-primary btn-sm m-3" (click)="baja()">Baja</button>
+            <button class="btn btn-secondary btn-sm m-3" (click)="cancelar()">Cancelar</button>
         </div>
     </div>
     <div class="">

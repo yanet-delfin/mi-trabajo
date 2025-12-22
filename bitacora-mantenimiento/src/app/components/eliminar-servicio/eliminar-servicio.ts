@@ -14,8 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 export class EliminarServicio {
 
+  moduloBaja: boolean = false;
+  equipo: string= '';
+  descripcion: string= '';
+
   servicios : any [] = [];
   ID: string = '';
+  motivoBaja: string = '';
 
   constructor(
     private service: Mantenimiento,
@@ -32,11 +37,30 @@ export class EliminarServicio {
     }
   }
 
-  bajaServicio(id:string) {
+  bajaServicio(id:string, equipo:string, descripcion:string) {
     alert('Servicio con ID ${id} dado de baja.');
-    this.ID
+    this.ID= id;
+    this.equipo= equipo;
+    this.descripcion= descripcion;
   }
   alerta(mensaje:string, equipo:string) {
     alert(mensaje + equipo);
+  }
+
+  async baja() {
+    try {
+      await firstValueFrom(this.service.darDeBaja(this.ID,this.motivoBaja))
+      alert('se dio de baja');
+    } catch (error) {
+      
+    }
+  }
+
+  async cancelar() {
+    try {
+      this.moduloBaja
+    } catch (error) {
+      
+    }
   }
 }
