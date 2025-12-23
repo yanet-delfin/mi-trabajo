@@ -2,10 +2,15 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { EscuelaService } from '../../services/escuela-service';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-component',
-  imports: [],
+  imports: [
+    CommonModule,
+    FormsModule
+  ],
   templateUrl: './dashboard-component.html',
   styleUrl: './dashboard-component.css',
 })
