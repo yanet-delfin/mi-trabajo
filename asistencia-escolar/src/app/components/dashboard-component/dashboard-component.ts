@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { EscuelaService } from '../../services/escuela-service';
 import { Router } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -17,16 +16,46 @@ import { FormsModule } from '@angular/forms';
 export class DashboardComponent {
 
   clases: any[] = [];
-  constructor(private apipaselistas: EscuelaService, private detectarCambios: ChangeDetectorRef, private navegar: Router) { }
+  claseSeleccionada: any = null;
+  modalAbierto = false;
+  constructor(private apipaselistas: EscuelaService, private detectarCambios: ChangeDetectorRef, private navegar: Router, private escuelaService: EscuelaService) { }
 
   async ngOnInit() {
-    const datos = await firstValueFrom(this.apipaselistas.obtenerClases());
-    this.clases = datos.data;
+    await this.cargarClases();
     this.detectarCambios.detectChanges();
   }
 
+  async cargarClases() {
+    this.clases = await this.escuelaService.obtenerClases();
+  }
+
+  abrirPaseLista(clase: any) {
+    this.claseSeleccionada = clase;
+    this.modalAbierto = true;
+  }
+
+  cerrarPaseLista() {
+    this.modalAbierto = false;
+    this.claseSeleccionada = null;
+  }
+
+  async guardarAsistencia() {
+    const presents = this.claseSeleccionada.alumnos
+      .filter((alumno: any) => alumno.presente)
+      .map((alumno: any) => alumno.id);
+
+    const payload = {
+      claseId: this.claseSeleccionada.id,
+      fecha: new Date().toISOString().split('T')[0],
+      presentes: presents
+    }; 
+
+    await this.escuelaService.registrarAsistencia(payload);
+    this.cerrarPaseLista();
+  }
+
   RegistrarClase() {
-    this.navegar.navigate(['crear-clase']);
+    this.navegar.navigate(['craer-clase']);
   }
 
   RegistroAlumnos() {

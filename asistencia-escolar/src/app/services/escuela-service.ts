@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
@@ -10,9 +11,11 @@ export class EscuelaService {
   private apiUrl = 'https://apipaselistas.onrender.com/api';
   constructor(private http: HttpClient ) {}
 
-  obtenerClases(): Observable<any>{ 
- return this.http.get (`${this.apiUrl}/clases`); 
-  } 
+  async obtenerClases(): Promise<any[]> {
+  return await lastValueFrom(
+    this.http.get<any[]>(`${this.apiUrl}/clases`)
+  );
+  }
   
   obtenerMaestros(): Observable<any> {
   return this.http.get(`${this.apiUrl}/maestros`);
