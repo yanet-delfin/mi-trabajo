@@ -1,1 +1,39 @@
-<p>registrar-alumno-component works!</p>
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header text-white" style="background-color:#880101;">
+      <h5 class="mb-0">Registro de Alumnos</h5>
+      <p class="text-muted">Ingrese los datos del alumno para registrarlo en el sistema.</p>
+    </div>
+
+    <div class="card-body">
+      <div class="mb-3">
+        <label class="form-label">Nombre del alumno</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="alumno.nombre"
+          placeholder="Ej. Juan Pérez"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Matrícula</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="alumno.matricula"
+          placeholder="Ej. A2024001"
+        />
+      </div>
+
+      <button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#880101;" (click)="guardarAlumno()"> <i class="bi bi-clipboard-check-fill"></i>
+        Guardar Alumno
+      </button>
+
+      <div *ngIf="mensaje" class="alert alert-info mt-3 text-center">
+        {{ mensaje }}
+      </div>
+    </div>
+  </div>
+</div>
+
