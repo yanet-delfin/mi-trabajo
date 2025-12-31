@@ -6,7 +6,7 @@ import { AdminCatalogosComponent } from './components/admin-catalogos-component/
 
 export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'craer-clase', component: RegistrarClaseComponent },
+    { path: 'crear-clase', component: RegistrarClaseComponent },
     { path: 'registro-alumnos', component: RegistrarAlumnoComponent },
     { path: 'configuracion', component: AdminCatalogosComponent },
     { path: '**', redirectTo: 'dashboard' }

@@ -1,14 +1,16 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { EscuelaService } from '../../services/escuela-service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-component',
+  standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   templateUrl: './dashboard-component.html',
   styleUrl: './dashboard-component.css',
@@ -17,11 +19,11 @@ export class DashboardComponent {
 
   clases: any[] = [];
   claseSeleccionada: any = null;
-  modalAbierto = false;
-  constructor(private apipaselistas: EscuelaService, private detectarCambios: ChangeDetectorRef, private navegar: Router, private escuelaService: EscuelaService) { }
+  mostrarLista = false;
+  constructor(private escuelaService: EscuelaService, private detectarCambios: ChangeDetectorRef, private navegar: Router) { }
 
   async ngOnInit() {
-    await this.cargarClases();
+    this.cargarClases();
     this.detectarCambios.detectChanges();
   }
 
@@ -29,33 +31,17 @@ export class DashboardComponent {
     this.clases = await this.escuelaService.obtenerClases();
   }
 
-  abrirPaseLista(clase: any) {
+  abrirLista(clase: any) {
     this.claseSeleccionada = clase;
-    this.modalAbierto = true;
+    this.mostrarLista = true;
   }
-
-  cerrarPaseLista() {
-    this.modalAbierto = false;
+  cerrarLista() {
+    this.mostrarLista = false;
     this.claseSeleccionada = null;
   }
 
-  async guardarAsistencia() {
-    const presents = this.claseSeleccionada.alumnos
-      .filter((alumno: any) => alumno.presente)
-      .map((alumno: any) => alumno.id);
-
-    const payload = {
-      claseId: this.claseSeleccionada.id,
-      fecha: new Date().toISOString().split('T')[0],
-      presentes: presents
-    }; 
-
-    await this.escuelaService.registrarAsistencia(payload);
-    this.cerrarPaseLista();
-  }
-
   RegistrarClase() {
-    this.navegar.navigate(['craer-clase']);
+    this.navegar.navigate(['crear-clase']);
   }
 
   RegistroAlumnos() {

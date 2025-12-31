@@ -1,5 +1,5 @@
 <div class="container mt-4 text-center shadow bg-white rounded">
-    <h1 class="fw-bold">𝙲𝚕𝚊𝚜𝚜𝚛𝚘𝚘𝚖</h1>
+    <h1 class="fw-bold" style="color:#8b0303;">𝙲𝚕𝚊𝚜𝚜𝚛𝚘𝚘𝚖</h1>
     <p class="text-muted">Sistema de gestión escolar</p>
 </div>
 <div class="container mt-4 text-center shadow bg-success rounded p-4">
@@ -8,53 +8,63 @@
 <div class="container shadow mt-4 p-4 text-center bg-white rounded">
     <button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#ff69b4;" (click)="Configuracion()"><i class="bi bi-book-fill"></i> Administración de Catálogos</button>
     <button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#8e44ad;" (click)="RegistrarClase()"><i class="bi bi-folder-plus"></i> Crear Clase</button>
-    <button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#ff8c00;" (click)="RegistroAlumnos()"><i class="bi bi-person-fill-add"></i> Registro de Alumnos</button>
+    <button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#ff0048;" (click)="RegistroAlumnos()"><i class="bi bi-person-fill-add"></i> Registro de Alumnos</button>
 </div>
 
 <div class="container mt-4">
-    <div class="row">
-    <div class="col-md-4 mb-3" *ngFor="let clase of clases">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">{{ clase.nombre }}</h5>
-          <p class="card-text">
-            {{ clase.materia }} <br>
-            Maestro: {{ clase.maestro }}
-          </p>
-          <button class="btn btn-warning w-100"
-                  (click)="abrirPaseLista(clase)">
-            Pasar lista
-          </button>
-        </div>
+    <h2 class="mb-3" style="color:#8b4e03;">Clases Recientes</h2>
+    <div *ngIf="clases.length === 0" class="alert alert-info">
+        No hay clases registradas.
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 mb-3" *ngFor="let clase of clases">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">{{ clase.materia }}</h5>
+        <p class="card-text">
+          Maestro: {{ clase.maestro }} <br>
+          Grupo: {{ clase.grupo }} <br>
+          Semestre: {{ clase.semestre }}
+        </p>
+
+        <button class="btn btn-primary"
+                (click)="abrirLista(clase)">
+          Pasar lista
+        </button>
       </div>
     </div>
   </div>
-  
-  <div *ngIf="modalAbierto" class="mt-5">
-    <h4>Lista de asistencia</h4>
+</div>
+<div class="mt-4" *ngIf="mostrarLista">
+  <div class="card border-secondary">
+    <div class="card-header d-flex justify-content-between">
+      <span>Pasar lista - {{ claseSeleccionada.materia }}</span>
+      <button class="btn btn-sm btn-danger" (click)="cerrarLista()">X</button>
+    </div>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Alumno</th>
-          <th>Asistencia</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let alumno of claseSeleccionada.alumnos">
-          <td>{{ alumno.nombre }}</td>
-          <td>
-            <input type="checkbox" [(ngModel)]="alumno.presente">
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Alumno</th>
+            <th>Presente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alumno of claseSeleccionada.alumnos">
+            <td>{{ alumno.nombre }}</td>
+            <td>
+              <input type="checkbox">
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <button class="btn btn-success me-2" (click)="guardarAsistencia()">
-      Guardar
-    </button>
-    <button class="btn btn-secondary" (click)="cerrarPaseLista()">
-      Cancelar
-    </button>
+      <button class="btn btn-success mt-2">
+        Guardar asistencia
+      </button>
+    </div>
   </div>
 </div>
