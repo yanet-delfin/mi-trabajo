@@ -50,23 +50,14 @@
 
         </div>
         <div class="mb-3 p-2">
-            <label class="form-label">Días de clase</label>
-
-<div class="d-flex flex-wrap gap-3 mb-3">
-  <div *ngFor="let dia of diasSemana" class="form-check">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      (change)="toggleDia(dia, $event.target.checked)"
-    />
-    <label class="form-check-label">
-      {{ dia }}
-    </label>
-  </div>
-</div>
-
+            <label>Días de la semana</label>
+  <div class="d-flex gap-3 mb-3">
+    <div *ngFor="let dia of ['Lunes','Martes','Miércoles','Jueves','Viernes']">
+      <input type="checkbox" (change)="toggleDia(dia)"> {{ dia }}
     </div>
-    <div><button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#ff0048;" (click)="guardarClase()"> <i class="bi bi-collection"></i> Guardar Clase</button></div>
+  </div>
+    </div>
+    <div><button class="btn text-white rounded-pill px-4 mx-2 w-100" style="background-color:#ff0048;" (click)="guardarClase()"> <i class="bi bi-collection"></i> Guardar Clase</button></div>
     </div>
 </div>
 

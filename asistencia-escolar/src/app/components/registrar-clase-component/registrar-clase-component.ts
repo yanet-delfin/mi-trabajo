@@ -26,30 +26,25 @@ export class RegistrarClaseComponent {
     grupo: '',
   };
 
-  diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
-
   constructor( private escuelaService: EscuelaService ) { }
 
   async ngOnInit() {
-    this.cargarCatalogos();
-  }
-
-  async cargarCatalogos() {
     const catalogos = await this.escuelaService.cargarCatalogos();
     this.maestros = catalogos.maestros;
     this.materias = catalogos.materias;
   }
 
-  toggleDia(dia: string, checked: boolean) {
-    if (checked) {
-      this.clase.dias.push(dia);
-    } else {
+  toggleDia(dia: string) {
+    if (this.clase.dias.includes(dia)) {
       this.clase.dias = this.clase.dias.filter(d => d !== dia);
+    } else {
+      this.clase.dias.push(dia);
     }
   }
-
   async guardarClase() {
+    console.log('Clase a guardar:', this.clase);
     await this.escuelaService.crearClase(this.clase);
-    alert('Clase creada con éxito 🚀');
+    alert('Clase creada con éxito');
   }
+  
 }
