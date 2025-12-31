@@ -15,13 +15,17 @@ export class EscuelaService {
  return await lastValueFrom(this.http.get<any[]>(`${this.apiUrl}/clases`));
   } 
   
-  obtenerMaestros(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/maestros`);
-}
+  async registrarMaestro(maestro: any): Promise<any> {
+    return await lastValueFrom(
+      this.http.post(`${this.apiUrl}/maestros`, maestro)
+    );
+  }
 
-obtenerMaterias(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/materias`);
-}
+async registrarMateria(materia: any): Promise<any> {
+    return await lastValueFrom(
+      this.http.post(`${this.apiUrl}/materias`, materia)
+    );
+  }
   
   async cargarCatalogos(): Promise<any> {
     const maestros = await lastValueFrom(

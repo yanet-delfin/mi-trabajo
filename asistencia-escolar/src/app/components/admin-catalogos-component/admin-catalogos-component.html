@@ -1,1 +1,43 @@
-<p>admin-catalogos-component works!</p>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Administración de Catálogos</h2>
+
+  <div class="row">
+    
+    <div class="col-6">
+      <div class="card p-3 shadow" style="color: #2b00ff;">
+        <h5 style="color: #550101;">Nuevo Maestro</h5>
+
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input class="form-control" [(ngModel)]="maestro.nombre">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Especialidad</label>
+          <input class="form-control" [(ngModel)]="maestro.especialidad">
+        </div>
+
+        <button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#2b00ff;" (click)="guardarMaestro()">
+          Guardar Maestro
+        </button>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card p-3 shadow" style="color: #00aa00;">
+        <h5 style="color: #550101;">Nueva Materia</h5>
+
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input class="form-control" [(ngModel)]="materia.nombre">
+        </div>
+
+        <button class="btn text-white rounded-pill px-4 mx-2" style="background-color:#00ff44;" (click)="guardarMateria()">
+          Guardar Materia
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
