@@ -7,7 +7,7 @@
         <div class="mb-3 p-2">
             <label for="Maestro" class="form-label"> Maestro: </label>
             <select class="form-select" [(ngModel)]="clase.maestroId" name="maestroId">
-                <option *ngFor="let maestro of maestros" [value]="maestro.id">{{ maestro.nombre }}</option>
+                <option *ngFor="let maestro of maestros" [ngValue]="maestro.id">{{ maestro.nombre }}</option>
             </select>
         </div>
         <div class="mb-3 p-2">
