@@ -6,7 +6,7 @@
         </div>
         <div class="mb-3 p-2">
             <label for="Maestro" class="form-label"> Maestro: </label>
-            <select class="form-select" [(ngModel)]="clase.maestroId">
+            <select class="form-select" [(ngModel)]="clase.maestroId" name="maestroId">
                 <option *ngFor="let maestro of maestros" [value]="maestro.id">{{ maestro.nombre }}</option>
             </select>
         </div>
@@ -53,11 +53,11 @@
             <label>Días de la semana</label>
   <div class="d-flex gap-3 mb-3">
     <div *ngFor="let dia of ['Lunes','Martes','Miércoles','Jueves','Viernes']">
-      <input type="checkbox" (change)="toggleDia(dia)"> {{ dia }}
+      <input type="checkbox" [checked]="clase.dias.includes(dia)" (change)="toggleDia(dia)"> {{ dia }}
     </div>
   </div>
     </div>
-    <div><button class="btn text-white rounded-pill px-4 mx-2 w-100" style="background-color:#ff0048;" (click)="guardarClase()"> <i class="bi bi-collection"></i> Guardar Clase</button></div>
+    <div><button type="button" class="btn text-white rounded-pill px-4 mx-2 w-100" style="background-color:#ff0048;" (click)="guardarClase()"> <i class="bi bi-collection"></i> Guardar Clase</button></div>
     </div>
 </div>
 

@@ -42,9 +42,31 @@ export class RegistrarClaseComponent {
     }
   }
   async guardarClase() {
-    console.log('Clase a guardar:', this.clase);
-    await this.escuelaService.crearClase(this.clase);
-    alert('Clase creada con éxito');
+
+  if (
+    !this.clase.maestroId ||
+    !this.clase.materiaId ||
+    !this.clase.semestre ||
+    !this.clase.grupo ||
+    this.clase.dias.length === 0
+  ) {
+    alert('Completa todos los campos');
+    return;
   }
-  
+
+  console.log('Clase a guardar:', this.clase);
+
+  await this.escuelaService.crearClase(this.clase);
+
+  alert('Clase creada con éxito');
+
+  this.clase = {
+    maestroId: null,
+    materiaId: null,
+    dias: [],
+    semestre: '',
+    grupo: '',
+  };
+}
+
 }
